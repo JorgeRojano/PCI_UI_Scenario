@@ -13,6 +13,18 @@ const dateFormatter = (params: { value: string | number | Date; }) => {
   return `${day}/${month}/${year}`;
 };
 
+const hazardousAnswerFormatter = (params: { value: string; }) => {
+  if (params.value === 'Y') {
+    return 'Yes';
+  } else if (params.value === 'N') {
+    return 'No';
+  } else if (params.value === 'n/a') {
+    return '';
+  } else {
+    return params.value;
+  }
+}
+
 const defaultColDef = {
   sortable: true,
   filter: "agTextColumnFilter",
@@ -40,7 +52,11 @@ const columnDefs: ColDef[] = [
     headerName: "Inclination (deg)",
     filter: "agNumberColumnFilter",
   },
-  { field: "pha", headerName: "Potentially Hazardous" },
+  {
+    field: "pha",
+    headerName: "Potentially Hazardous",
+    valueFormatter: hazardousAnswerFormatter,
+  },
   { field: "orbit_class", headerName: "Orbit Class", enableRowGroup: true },
 ];
 
