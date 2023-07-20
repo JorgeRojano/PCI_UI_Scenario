@@ -68,6 +68,7 @@ const NeoGrid = (): JSX.Element => {
         columnDefs={columnDefs}
         defaultColDef={defaultColDef}
         rowGroupPanelShow={'always'}
+        /* enableRangeSelection is only available in enterprise version https://www.ag-grid.com/react-data-grid/range-selection/#copy-range-down */
       />
     </div>
   );
